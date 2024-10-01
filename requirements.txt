@@ -1,4 +1,4 @@
 pyPPG==1.0.73
 opencv-python==4.5.3.56
-numpy==1.21.2
+numpy==1.23.2
 streamlit==1.38.0
