@@ -1,1 +1,7 @@
 streamlit
+pyPPG
+cv2
+numpy
+streamlit_webrtc 
+webrtc_streamer
+VideoProcessorBase
