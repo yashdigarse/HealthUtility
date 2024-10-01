@@ -1,7 +1,7 @@
 streamlit
-pyPPG
 opencv-python
 numpy
+pyPPG
 streamlit_webrtc 
 webrtc_streamer
 VideoProcessorBase
