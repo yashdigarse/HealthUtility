@@ -16,3 +16,35 @@ def calculate_bpm(signal, fps):
 st.title('Real-time Heart Rate Monitoring using PPG')
 run = st.checkbox('Run')
 
+# Initialize video capture
+cap = cv2.VideoCapture(0)
+fps = cap.get(cv2.CAP_PROP_FPS)
+
+# Initialize variables
+signal = []
+timestamps = []
+
+while run:
+    ret, frame = cap.read()
+    if not ret:
+        st.write("Failed to capture video")
+        break
+
+    # Convert frame to grayscale
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+    # Extract mean intensity from a region of interest (ROI)
+    roi = gray[100:200, 100:200]
+    mean_intensity = np.mean(roi)
+    signal.append(mean_intensity)
+    timestamps.append(time.time())
+
+    # Display the video frame
+    st.image(frame, channels="BGR")
+
+    # Process the signal if we have enough data points
+    if len(signal) > fps * 10:  # 10 seconds of data
+        bpm = calculate_bpm(np.array(signal[-int(fps*10):]), fps)
+        st.write(f"Heart Rate: {bpm:.2f} BPM")
+
+cap.release()
