@@ -1,4 +1,3 @@
-streamlit==1.39.0
-opencv-python==4.5.3.56
-pyPPG==1.0.73
+streamlit
 numpy
+opencv-python
